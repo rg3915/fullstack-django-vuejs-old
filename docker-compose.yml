@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  redis:
+    image: 'redis:alpine'
+
+  web:
+    build: .
+    command: bash -c "python manage.py migrate --noinput && python manage.py runserver 0.0.0.0:8000"
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/code
+    ports:
+      - '8000:8000'
+    depends_on:
+      - redis
+
+  celery:
+    build: .
+    command: bash -c "celery --app=myproject worker --loglevel=INFO --queue=fila1"
+    volumes:
+      - .:/code
+    depends_on:
+      - redis
