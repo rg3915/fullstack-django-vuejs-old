@@ -15,4 +15,28 @@
   </div>
 </div>
 
+<div class="text-center mt-5 pt-5">
+    <h1>Task Results</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Task ID</th>
+          <th>Task Name</th>
+          <th>Completed Datetime</th>
+          <th>Task State</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for object in object_list %}
+          <tr>
+            <td>{{ object.task_id }}</td>
+            <td>{{ object.task_name }}</td>
+            <td>{{ object.date_done }}</td>
+            <td>{{ object.status }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+
 {% endblock content %}

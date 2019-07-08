@@ -40,3 +40,10 @@ Mas o `queue` define uma fila.
 celery --app=myproject worker --loglevel=INFO --queue=fila1
 ```
 
+### Instalando e configurando django-celery-results
+
+https://django-celery-results.readthedocs.io/en/latest/
+
+```
+python manage.py migrate django_celery_results
+```
