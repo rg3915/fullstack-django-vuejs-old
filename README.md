@@ -28,7 +28,15 @@ python manage.py migrate
 
 Abra outro terminal com o virtualenv ativado e digite
 
+Dá pra fazer sem o `queue`.
+
 ```
-celery --app=myproject worker --loglevel=INFO --queue=fila1,fila2
+celery --app=myproject worker --loglevel=INFO
+```
+
+Mas o `queue` define uma fila.
+
+```
+celery --app=myproject worker --loglevel=INFO --queue=fila1
 ```
 
