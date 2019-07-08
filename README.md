@@ -23,3 +23,12 @@ pip install -r requirements.txt
 python contrib/env_gen.py
 python manage.py migrate
 ```
+
+## Rodando o Celery
+
+Abra outro terminal com o virtualenv ativado e digite
+
+```
+celery --app=myproject worker --loglevel=INFO --queue=fila1,fila2
+```
+
