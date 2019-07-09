@@ -14,8 +14,6 @@ services:
     expose:
       - '8000'
     command: gunicorn --reload myproject.wsgi:application -b 0.0.0.0:8000
-    volumes:
-      - .:/code
     depends_on:
       - redis
 
@@ -25,15 +23,13 @@ services:
     ports:
       - '80:8000'
     volumes:
-      - ./myproject/config/nginx:/etc/nginx/conf.d
+      - ./config/nginx:/etc/nginx/conf.d
     depends_on:
       - app
 
   celery:
     build: .
     command: celery --app=myproject worker --loglevel=INFO --queue=fila1
-    volumes:
-      - .:/code
     depends_on:
       - app
       - redis
