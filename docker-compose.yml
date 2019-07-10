@@ -28,8 +28,10 @@ services:
       - app
 
   celery:
-    build: .
-    command: celery --app=myproject worker --loglevel=INFO --queue=fila1
+    image: celery:latest
+    command: "mkdir myproject && celery -A myproject --port=8000 worker -l info --queue=fila1"
+    volumes:
+      - .:./myproject
     depends_on:
       - app
       - redis

@@ -7,6 +7,7 @@ WORKDIR app/
 ADD . .
 RUN pip install -r requirements.txt
 EXPOSE 8000
+RUN rm -rf .venv && mkdir static
 RUN python manage.py collectstatic --noinput
 RUN python manage.py migrate
 CMD gunicorn --reload myproject.wsgi:application -b 0.0.0.0:8000
