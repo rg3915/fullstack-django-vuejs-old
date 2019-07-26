@@ -1,8 +1,16 @@
 version: '3'
 
 services:
+  db:
+    image: postgres
+    restart: always
+    hostname: db
+    environment:
+      POSTGRES_PASSWORD: postgres
+
   redis:
     image: 'redis:alpine'
+    hostname: redis
 
   app:
     build:
@@ -10,28 +18,31 @@ services:
       dockerfile: Dockerfile
     hostname: app
     stdin_open: true
-    tty: true
+    # tty: true
     expose:
       - '8000'
-    command: gunicorn --reload myproject.wsgi:application -b 0.0.0.0:8000
+    volumes:
+      - .env:/app/.env
     depends_on:
       - redis
+      - db
 
   nginx:
     image: nginx
     hostname: nginx
     ports:
-      - '80:8000'
+      - '82:8000'
     volumes:
       - ./config/nginx:/etc/nginx/conf.d
     depends_on:
       - app
 
   celery:
-    image: celery:latest
-    command: "mkdir myproject && celery -A myproject --port=8000 worker -l info --queue=fila1"
-    volumes:
-      - .:./myproject
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: "celery -A myproject worker -l info --queue=fila1"
     depends_on:
       - app
       - redis
+      - db

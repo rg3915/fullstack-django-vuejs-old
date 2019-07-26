@@ -6,3 +6,4 @@ Django==2.2.3
 gunicorn==19.9.0
 python-decouple==3.1
 redis==3.2.1
+psycopg2
