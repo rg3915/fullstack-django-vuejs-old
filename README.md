@@ -24,6 +24,20 @@ python contrib/env_gen.py
 python manage.py migrate
 ```
 
+## Rodando com Docker
+
+```
+docker-compose up --build
+```
+
+Está rodando na porta `localhost:82`. Ou você pode digitar
+
+```
+docker container inspect ID
+```
+
+e pegar o `IPAddress`.
+
 ## Rodando o Celery
 
 Abra outro terminal com o virtualenv ativado e digite
@@ -46,19 +60,5 @@ https://django-celery-results.readthedocs.io/en/latest/
 
 ```
 python manage.py migrate django_celery_results
-```
-
-Original Dockerfile
-
-```
-FROM python:3.7
-ENV PYTHONUNBUFFERED 1
-ENV DJANGO_ENV dev
-ENV DOCKER_CONTAINER 1
-COPY ./requirements.txt /code/requirements.txt
-RUN pip install -r /code/requirements.txt
-COPY . /code/
-WORKDIR /code/
-EXPOSE 8000
 ```
 

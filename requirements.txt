@@ -1,9 +1,10 @@
 celery==4.3.0
 dj-database-url==0.5.0
+dj-static==0.0.6
 django-celery-results==1.1.2
 django-extensions==2.1.9
 Django==2.2.3
 gunicorn==19.9.0
+psycopg2
 python-decouple==3.1
 redis==3.2.1
-psycopg2

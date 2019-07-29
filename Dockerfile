@@ -13,7 +13,6 @@ COPY .env .
 COPY manage.py .
 COPY myproject ./myproject
 
-RUN ls -la
 RUN mkdir static & \
     python manage.py collectstatic --noinput
 # python manage.py migrate
