@@ -45,14 +45,36 @@ Abra outro terminal com o virtualenv ativado e digite
 Dá pra fazer sem o `queue`.
 
 ```
+# terminal 1
 celery --app=myproject worker --loglevel=INFO
 ```
 
 Mas o `queue` define uma fila.
 
 ```
+# terminal 1
 celery --app=myproject worker --loglevel=INFO --queue=fila1
 ```
+
+## Experimentando o flower
+
+O [flower](https://flower.readthedocs.io/en/latest/) serve pra monitorar o Celery em realtime.
+
+Rode num outro terminal o comando
+
+```
+# terminal 2
+celery -A myproject flower
+```
+
+Se quiser estressar o Celery e ver no monitor digite
+
+```
+for i in $(seq 10); do curl localhost:8000/task/print_numbers/; sleep 1; done
+```
+
+A url do monitor é http://localhost:5555/monitor
+
 
 ### Instalando e configurando django-celery-results
 
