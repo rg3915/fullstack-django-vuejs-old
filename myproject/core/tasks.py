@@ -30,6 +30,6 @@ def print_numbers(max_number):
     logger.info('Finishing task..')
     channels_client.trigger(
         'my-channel', 'my-event',
-        {'message': 'hello world'}
+        {'message': 'Finalizada com sucesso!'}
     )
     return True
