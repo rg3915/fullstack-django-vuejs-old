@@ -67,6 +67,12 @@ Rode num outro terminal o comando
 celery -A myproject flower
 ```
 
+Se for no Docker, pegue o ip do service flower
+
+```
+IP-ADDRESS:5555
+```
+
 Se quiser estressar o Celery e ver no monitor digite
 
 ```

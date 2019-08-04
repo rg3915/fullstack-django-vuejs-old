@@ -5,6 +5,8 @@ services:
     image: postgres
     restart: always
     hostname: db
+    volumes:
+      - db-data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: postgres
 
@@ -46,3 +48,14 @@ services:
       - app
       - redis
       - db
+
+  flower:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: "celery -A myproject flower"
+    depends_on:
+      - celery
+
+volumes:
+  db-data:
