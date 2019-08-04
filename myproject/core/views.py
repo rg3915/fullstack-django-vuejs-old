@@ -1,3 +1,4 @@
+from decouple import config
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -6,9 +7,10 @@ from .tasks import print_numbers
 
 
 def index(request):
-    object_list = TaskResult.objects.all()
-    context = {'object_list': object_list}
     template_name = 'index.html'
+    object_list = TaskResult.objects.all()
+    my_key = config('KEY')
+    context = {'object_list': object_list, 'my_key': my_key}
     return render(request, template_name, context)
 
 

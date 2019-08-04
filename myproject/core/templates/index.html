@@ -40,3 +40,24 @@
 </div>
 
 {% endblock content %}
+
+{% block js %}
+
+  <script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var my_key = '{{ my_key }}'
+    var pusher = new Pusher(my_key, {
+      cluster: 'mt1',
+      forceTLS: true
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      alert(JSON.stringify(data));
+    });
+  </script>
+
+{% endblock js %}
