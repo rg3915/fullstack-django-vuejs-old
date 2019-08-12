@@ -30,6 +30,13 @@ python manage.py migrate
 docker-compose up --build
 ```
 
+Entre no container e rode as migrações:
+
+```
+docker container exec -ti ID python manage.py migrate
+docker container exec -ti ID python manage.py createsuperuser
+```
+
 Está rodando na porta `localhost:82`. Ou você pode digitar
 
 ```
