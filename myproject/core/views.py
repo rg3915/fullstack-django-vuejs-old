@@ -1,17 +1,19 @@
-from decouple import config
-from django.shortcuts import render
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
+from django.http import JsonResponse
 from django.urls import reverse
-from django_celery_results.models import TaskResult
+# from django_celery_results.models import TaskResult
 from .tasks import print_numbers
 
 
-def index(request):
-    template_name = 'index.html'
-    object_list = TaskResult.objects.all()
-    my_key = config('KEY')
-    context = {'object_list': object_list, 'my_key': my_key}
-    return render(request, template_name, context)
+def api_users(request):
+    users = User.objects.all()
+    data = [
+        {'username': user.username}
+        for user in users
+    ]
+    response = {'data': data}
+    return JsonResponse(response)
 
 
 def run_task(request):
