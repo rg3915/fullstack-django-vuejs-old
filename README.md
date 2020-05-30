@@ -13,6 +13,12 @@ This is a Fullstack test project, and use.
 * Redis
 * Flower
 
+
+![01](01-swarm.png)
+
+![02](02-external-AWS-service.png)
+
+
 ## Como rodar o projeto?
 
 * Clone esse repositório.
@@ -36,6 +42,7 @@ Entre no container e rode as migrações:
 docker container exec -ti ID python manage.py migrate
 docker container exec -ti ID python manage.py createsuperuser
 ```
+
 
 ## Portainer
 
