@@ -6,6 +6,6 @@ app_name = 'core'
 
 
 urlpatterns = [
-    path('', v.index, name='index'),
+    path('api/users/', v.api_users, name='users'),
     path('task/print_numbers/', v.run_task, name='run_task'),
 ]
