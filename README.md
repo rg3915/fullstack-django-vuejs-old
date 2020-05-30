@@ -24,8 +24,11 @@ This is a Fullstack test project, and use.
 ```
 git clone https://github.com/rg3915/fullstack-django-vuejs.git
 cd fullstack-django-vuejs
-docker-compose up --build
+docker-compose up --build -d
 ```
+
+https://www.youtube.com/watch?v=3lD7zdwSYaU
+
 
 Entre no container e rode as migrações:
 
@@ -33,6 +36,21 @@ Entre no container e rode as migrações:
 docker container exec -ti ID python manage.py migrate
 docker container exec -ti ID python manage.py createsuperuser
 ```
+
+## Portainer
+
+```
+docker run -d \
+-p 9000:9000 \
+--restart always \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v /opt/portainer:/data \
+portainer/portainer
+```
+
+## Portas
+
+Backend: localhost:82/api/users/
 
 ## Rodando o Celery
 

@@ -2,60 +2,83 @@ version: '3.7'
 
 services:
   db:
-    image: postgres
+    image: postgres:11-alpine  # NÃO use postgres:12
     restart: always
-    hostname: db
+    # hostname: mydb  # NÃO defina hostname
+    container_name: mydb
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: example
+      POSTGRES_USER: example
+      POSTGRES_PASSWORD: example
+    networks:
+      - fullstack
 
   redis:
     image: 'redis:alpine'
     hostname: redis
+    container_name: fullstack_redis
+    networks:
+      - fullstack
 
   app:
     build:
       context: .
       dockerfile: Dockerfile
     hostname: app
+    container_name: fullstack_app
     stdin_open: true
-    # tty: true
     expose:
       - '8000'
     volumes:
       - .env:/app/.env
+    command: bash -c "python manage.py migrate"
     depends_on:
       - redis
       - db
+    networks:
+      - fullstack
 
   nginx:
     image: nginx
     hostname: nginx
+    container_name: fullstack_nginx
     ports:
-      - '82:8000'
+      - '80:8000'
     volumes:
       - ./config/nginx:/etc/nginx/conf.d
     depends_on:
       - app
+    networks:
+      - fullstack
 
   celery:
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: fullstack_celery
     command: "celery -A myproject worker -l info --queue=fila1"
     depends_on:
       - app
       - redis
       - db
+    networks:
+      - fullstack
 
   flower:
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: fullstack_flower
     command: "celery -A myproject flower"
     depends_on:
       - celery
+    networks:
+      - fullstack
 
 volumes:
-  db-data:
+  pgdata:
+
+networks:
+  fullstack:
