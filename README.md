@@ -14,9 +14,9 @@ This is a Fullstack test project, and use.
 * Flower
 
 
-![01](01-swarm.png)
+![01](img/01-swarm.png)
 
-![02](02-external-AWS-service.png)
+![02](img/02-external-AWS-service.png)
 
 
 ## Como rodar o projeto?
