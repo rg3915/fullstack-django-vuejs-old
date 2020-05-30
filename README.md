@@ -1,10 +1,17 @@
-# django-celery-redis-docker
+# fullstack-django-vuejs
 
-Test Django and Celery on Docker with Redis
+This is a Fullstack test project, and use.
 
-### Tutorial
-
-https://medium.com/@mdcg.dev/configurando-um-sistem-em-django-para-executar-tarefas-ass%C3%ADncronas-utilizando-celery-redis-e-53a30d0d2ec2
+* Ansible
+* Docker
+* Swarm
+* Django 2.2.12
+* VueJS
+* Nginx
+* PostgreSQL
+* Celery
+* Redis
+* Flower
 
 ## Como rodar o projeto?
 
@@ -15,18 +22,8 @@ https://medium.com/@mdcg.dev/configurando-um-sistem-em-django-para-executar-tare
 * Rode as migrações.
 
 ```
-git clone https://github.com/rg3915/django-celery-redis-docker.git
-cd django-celery-redis-docker
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-python contrib/env_gen.py
-python manage.py migrate
-```
-
-## Rodando com Docker
-
-```
+git clone https://github.com/rg3915/fullstack-django-vuejs.git
+cd fullstack-django-vuejs
 docker-compose up --build
 ```
 
@@ -37,17 +34,7 @@ docker container exec -ti ID python manage.py migrate
 docker container exec -ti ID python manage.py createsuperuser
 ```
 
-Está rodando na porta `localhost:82`. Ou você pode digitar
-
-```
-docker container inspect ID
-```
-
-e pegar o `IPAddress`.
-
 ## Rodando o Celery
-
-Abra outro terminal com o virtualenv ativado e digite
 
 Dá pra fazer sem o `queue`.
 
@@ -74,12 +61,6 @@ Rode num outro terminal o comando
 celery -A myproject flower
 ```
 
-Se for no Docker, pegue o ip do service flower
-
-```
-IP-ADDRESS:5555
-```
-
 Se quiser estressar o Celery e ver no monitor digite
 
 ```
@@ -96,4 +77,12 @@ https://django-celery-results.readthedocs.io/en/latest/
 ```
 python manage.py migrate django_celery_results
 ```
+
+### Links
+
+https://medium.com/@mdcg.dev/configurando-um-sistem-em-django-para-executar-tarefas-ass%C3%ADncronas-utilizando-celery-redis-e-53a30d0d2ec2
+
+https://stackoverflow.com/a/54162975/802542
+
+https://mattsegal.dev/django-prod-architectures.html
 
