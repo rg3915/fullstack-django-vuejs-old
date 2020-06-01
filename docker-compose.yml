@@ -70,6 +70,14 @@ services:
     networks:
       - fullstack
 
+  frontend:
+    build:
+      context: .
+      dockerfile: DockerfileVueJS
+    hostname: vuejs
+    expose:
+      - '8080'
+
 volumes:
   pgdata:
 

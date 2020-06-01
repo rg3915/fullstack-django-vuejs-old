@@ -109,6 +109,18 @@ https://django-celery-results.readthedocs.io/en/latest/
 python manage.py migrate django_celery_results
 ```
 
+### Frontend
+
+Add hoc
+
+```
+docker build -f DockerfileVueJS -t vuejs-app .
+
+docker run -it -p 8080:8080 \
+--rm --name vuejs \
+vuejs-app
+```
+
 ### Links
 
 https://medium.com/@mdcg.dev/configurando-um-sistem-em-django-para-executar-tarefas-ass%C3%ADncronas-utilizando-celery-redis-e-53a30d0d2ec2
