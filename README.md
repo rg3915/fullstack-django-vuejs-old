@@ -39,8 +39,7 @@ https://www.youtube.com/watch?v=3lD7zdwSYaU
 Entre no container e rode as migrações:
 
 ```
-docker container exec -ti ID python manage.py migrate
-docker container exec -ti ID python manage.py createsuperuser
+docker container exec -it fullstack-django-vuejs_app python manage.py createsuperuser
 ```
 
 

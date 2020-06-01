@@ -5,7 +5,7 @@ services:
     image: postgres:11-alpine  # NÃO use postgres:12
     restart: always
     # hostname: mydb  # NÃO defina hostname
-    container_name: mydb
+    # container_name: mydb
     volumes:
       - pgdata:/var/lib/postgresql/data
     environment:
@@ -18,7 +18,7 @@ services:
   redis:
     image: 'redis:alpine'
     hostname: redis
-    container_name: fullstack_redis
+    # container_name: fullstack_redis
     networks:
       - fullstack
 
@@ -27,13 +27,13 @@ services:
       context: .
       dockerfile: Dockerfile
     hostname: app
-    container_name: fullstack_app
+    # container_name: fullstack_app
     stdin_open: true
     expose:
       - '8000'
     volumes:
       - .env:/app/.env
-    command: bash -c "python manage.py migrate"
+    command: bash -c "python manage.py migrate && gunicorn myproject.wsgi:application -b 0.0.0.0:8000"
     depends_on:
       - redis
       - db
@@ -43,7 +43,7 @@ services:
   nginx:
     image: nginx
     hostname: nginx
-    container_name: fullstack_nginx
+    # container_name: fullstack_nginx
     ports:
       - '80:8000'
     volumes:
@@ -57,7 +57,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: fullstack_celery
+    # container_name: fullstack_celery
     command: "celery -A myproject worker -l info --queue=fila1"
     depends_on:
       - app
@@ -70,7 +70,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: fullstack_flower
+    # container_name: fullstack_flower
     command: "celery -A myproject flower"
     depends_on:
       - celery
