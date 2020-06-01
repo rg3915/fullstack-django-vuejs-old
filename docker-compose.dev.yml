@@ -6,10 +6,13 @@ services:
     restart: always
     volumes:
       - pgdata:/var/lib/postgresql/data
-    environment:
-      POSTGRES_DB: example
-      POSTGRES_USER: example
-      POSTGRES_PASSWORD: example
+      # - .env:/app/.env
+    env_file:
+      - .env
+    # environment:
+    #   POSTGRES_DB: example
+    #   POSTGRES_USER: example
+    #   POSTGRES_PASSWORD: example
     networks:
       - fullstack
 
