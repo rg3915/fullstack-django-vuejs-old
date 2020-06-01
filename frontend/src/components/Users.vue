@@ -46,17 +46,15 @@
 
     data: () => ({
       users: [
-        { 'id': 5, 'username': 'Huguinho' },
-        { 'id': 6, 'username': 'Zezinho' },
-        { 'id': 7, 'username': 'Luizinho' },
-        { 'id': 8, 'username': 'Tio Patinhas' },
-        { 'id': 9, 'username': 'Pato Donald' },
+        { 'id': 100, 'username': 'Huguinho' },
+        { 'id': 101, 'username': 'Zezinho' },
+        { 'id': 102, 'username': 'Luizinho' },
       ]
     }),
     created() {
       axios.get(endpoint + 'users/')
         .then(response => {
-          response.data.map(item => {
+          response.data.data.map(item => {
             return this.users.push(item)
           })
         })
