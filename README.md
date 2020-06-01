@@ -27,7 +27,7 @@ This is a Fullstack test project, and use.
 ```
 git clone https://github.com/rg3915/fullstack-django-vuejs.git
 cd fullstack-django-vuejs
-docker-compose up --build -d
+docker-compose -f docker-compose.dev.yml up --build -d
 ```
 
 

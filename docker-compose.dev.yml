@@ -1,0 +1,85 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:11-alpine
+    restart: always
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: example
+      POSTGRES_USER: example
+      POSTGRES_PASSWORD: example
+    networks:
+      - fullstack
+
+  redis:
+    image: 'redis:alpine'
+    hostname: redis
+    networks:
+      - fullstack
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: app
+    stdin_open: true
+    expose:
+      - '8000'
+    volumes:
+      - .env:/app/.env
+    command: bash -c "python manage.py migrate && gunicorn myproject.wsgi:application -b 0.0.0.0:8000"
+    depends_on:
+      - redis
+      - db
+    networks:
+      - fullstack
+
+  nginx:
+    image: nginx
+    hostname: nginx
+    ports:
+      - '80:8000'
+    volumes:
+      - ./config/nginx:/etc/nginx/conf.d
+    depends_on:
+      - app
+    networks:
+      - fullstack
+
+  celery:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: "celery -A myproject worker -l info --queue=fila1"
+    depends_on:
+      - app
+      - redis
+      - db
+    networks:
+      - fullstack
+
+  flower:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: "celery -A myproject flower"
+    depends_on:
+      - celery
+    networks:
+      - fullstack
+
+  frontend:
+    build:
+      context: .
+      dockerfile: DockerfileVueJS
+    hostname: vuejs
+    expose:
+      - '8080'
+
+volumes:
+  pgdata:
+
+networks:
+  fullstack:
