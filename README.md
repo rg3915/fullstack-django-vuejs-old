@@ -2,16 +2,16 @@
 
 This is a Fullstack test project, and use.
 
-* Ansible
-* Docker
-* Swarm
-* Django 2.2.12
-* VueJS
-* Nginx
-* PostgreSQL
-* Celery
-* Redis
-* Flower
+* [Ansible](https://docs.ansible.com/ansible/latest/index.html)
+* [Docker](https://docs.docker.com/get-started/)
+* [Swarm](https://docs.docker.com/engine/swarm/)
+* [Django 2.2.12](https://docs.djangoproject.com/en/2.2/)
+* [VueJS](https://vuejs.org/v2/guide/)
+* [Nginx](https://nginx.org/en/docs/)
+* [PostgreSQL](https://www.postgresql.org/docs/)
+* [Celery](https://docs.celeryproject.org/en/stable/getting-started/introduction.html)
+* [Redis](https://redis.io/documentation)
+* [Flower](https://flower.readthedocs.io/en/latest/)
 
 ## Architecture
 
