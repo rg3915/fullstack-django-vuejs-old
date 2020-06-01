@@ -39,18 +39,21 @@
 
     <v-content>
       <HelloWorld/>
+      <Users/>
     </v-content>
   </v-app>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld';
+import Users from './components/Users';
 
 export default {
   name: 'App',
 
   components: {
     HelloWorld,
+    Users
   },
 
   data: () => ({
