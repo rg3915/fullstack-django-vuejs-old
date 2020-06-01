@@ -13,5 +13,4 @@ RUN pip install -U pip && pip install -r requirements.txt
 COPY . .
 
 RUN python manage.py collectstatic --noinput
-# python manage.py migrate
 CMD gunicorn myproject.wsgi:application -b 0.0.0.0:8000

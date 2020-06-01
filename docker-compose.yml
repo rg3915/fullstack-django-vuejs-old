@@ -2,10 +2,8 @@ version: '3.7'
 
 services:
   db:
-    image: postgres:11-alpine  # NÃO use postgres:12
+    image: postgres:11-alpine
     restart: always
-    # hostname: mydb  # NÃO defina hostname
-    # container_name: mydb
     volumes:
       - pgdata:/var/lib/postgresql/data
     environment:
@@ -18,7 +16,6 @@ services:
   redis:
     image: 'redis:alpine'
     hostname: redis
-    # container_name: fullstack_redis
     networks:
       - fullstack
 
@@ -27,7 +24,6 @@ services:
       context: .
       dockerfile: Dockerfile
     hostname: app
-    # container_name: fullstack_app
     stdin_open: true
     expose:
       - '8000'
@@ -43,7 +39,6 @@ services:
   nginx:
     image: nginx
     hostname: nginx
-    # container_name: fullstack_nginx
     ports:
       - '80:8000'
     volumes:
@@ -57,7 +52,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    # container_name: fullstack_celery
     command: "celery -A myproject worker -l info --queue=fila1"
     depends_on:
       - app
@@ -70,7 +64,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    # container_name: fullstack_flower
     command: "celery -A myproject flower"
     depends_on:
       - celery
