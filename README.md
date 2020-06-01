@@ -13,19 +13,16 @@ This is a Fullstack test project, and use.
 * Redis
 * Flower
 
+## Architecture
 
 ![01](img/01-swarm.png)
+
+## AWS Architecture
 
 ![02](img/02-external-AWS-service.png)
 
 
-## Como rodar o projeto?
-
-* Clone esse repositório.
-* Crie um virtualenv com Python 3.
-* Ative o virtualenv.
-* Instale as dependências.
-* Rode as migrações.
+## How to run project?
 
 ```
 git clone https://github.com/rg3915/fullstack-django-vuejs.git
@@ -33,14 +30,25 @@ cd fullstack-django-vuejs
 docker-compose up --build -d
 ```
 
-https://www.youtube.com/watch?v=3lD7zdwSYaU
 
-
-Entre no container e rode as migrações:
+Enter in container and create super user:
 
 ```
-docker container exec -it fullstack-django-vuejs_app python manage.py createsuperuser
+docker container exec -it \
+fullstack-django-vuejs_app_1 \
+python manage.py createsuperuser \
+--username="admin"
 ```
+
+**Tips**:
+
+* Dont use `postgres:12` because it does not allow Django `migrate` to work.
+* Do not set `hostname` in `db` because it interferes with the comunication between Django and database.
+* Do not set `container_name` in services because it interferes with the comunication between `nginx` e a `app`.
+
+* Não use `postgres:12` porque ele não permite que o Django `migrate` funcione.
+* Não defina `hostname` em `db` porque interfere na comunicação entre o Django e o banco.
+* Não defina `container_name` nos serviços porque interfere na comunicação entre o `nginx` e a `app`.
 
 
 ## Portainer
@@ -54,47 +62,46 @@ docker run -d \
 portainer/portainer
 ```
 
-## Portas
+## Ports
 
-Backend: localhost:82/api/users/
+Portainer: `localhost:9000`
 
-## Rodando o Celery
+Backend: `localhost/api/users/`
 
-Dá pra fazer sem o `queue`.
+Flower: `localhost:5555/monitor`
+
+
+## Running Celery
+
+Without `queue`.
 
 ```
-# terminal 1
 celery --app=myproject worker --loglevel=INFO
 ```
 
-Mas o `queue` define uma fila.
+With `queue`.
 
 ```
-# terminal 1
 celery --app=myproject worker --loglevel=INFO --queue=fila1
 ```
 
-## Experimentando o flower
+## Flower monitoring the tasks
 
-O [flower](https://flower.readthedocs.io/en/latest/) serve pra monitorar o Celery em realtime.
-
-Rode num outro terminal o comando
+The [flower](https://flower.readthedocs.io/en/latest/) monitoring Celery in realtime.
 
 ```
-# terminal 2
 celery -A myproject flower
 ```
 
-Se quiser estressar o Celery e ver no monitor digite
+If stress Celery type and see in monitor
 
 ```
-for i in $(seq 10); do curl localhost:8000/task/print_numbers/; sleep 1; done
+for i in $(seq 10); do curl localhost/task/print_numbers/; sleep 1; done
 ```
 
-A url do monitor é http://localhost:5555/monitor
 
 
-### Instalando e configurando django-celery-results
+### django-celery-results
 
 https://django-celery-results.readthedocs.io/en/latest/
 
@@ -110,3 +117,4 @@ https://stackoverflow.com/a/54162975/802542
 
 https://mattsegal.dev/django-prod-architectures.html
 
+https://www.youtube.com/watch?v=3lD7zdwSYaU
