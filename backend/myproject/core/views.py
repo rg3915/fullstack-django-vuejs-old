@@ -7,6 +7,9 @@ from .tasks import print_numbers
 
 
 def api_users(request):
+    '''
+    https://github.com/rg3915/django-vuejs-03-separated
+    '''
     users = User.objects.all()
     data = [
         {'username': user.username}
