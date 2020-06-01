@@ -2,7 +2,7 @@ FROM node:current-alpine
 
 RUN npm install -g http-server
 
-WORKDIR /app/frontend
+WORKDIR /app
 
 COPY frontend/package*.json ./
 

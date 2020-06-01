@@ -130,3 +130,7 @@ https://stackoverflow.com/a/54162975/802542
 https://mattsegal.dev/django-prod-architectures.html
 
 https://www.youtube.com/watch?v=3lD7zdwSYaU
+
+https://docs.ansible.com/ansible/latest/modules/docker_container_module.html#examples
+
+https://gist.github.com/mosquito/b23e1c1e5723a7fd9e6568e5cf91180f

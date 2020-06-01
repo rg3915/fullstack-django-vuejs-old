@@ -75,8 +75,10 @@ services:
       context: .
       dockerfile: DockerfileVueJS
     hostname: vuejs
-    expose:
-      - '8080'
+    ports:
+      - '8080:8080'
+    networks:
+      - fullstack
 
 volumes:
   pgdata:
