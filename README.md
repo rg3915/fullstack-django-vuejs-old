@@ -121,6 +121,14 @@ docker run -it -p 8080:8080 \
 vuejs-app
 ```
 
+### Observações
+
+Em produção tive que configurar algumas coisas manualmente:
+
+* Criei banco de dados PostgreSQL na RDS.
+* Configurei endpoint no VueJS manualmente.
+* Liberei as portas 80, 8080 e 9000 no Security Group.
+
 ### Links
 
 https://medium.com/@mdcg.dev/configurando-um-sistem-em-django-para-executar-tarefas-ass%C3%ADncronas-utilizando-celery-redis-e-53a30d0d2ec2

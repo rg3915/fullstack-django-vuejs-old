@@ -1,18 +1,6 @@
 version: '3.7'
 
 services:
-  db:
-    image: postgres:11-alpine
-    restart: always
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    environment:
-      POSTGRES_DB: example
-      POSTGRES_USER: example
-      POSTGRES_PASSWORD: example
-    networks:
-      - fullstack
-
   redis:
     image: 'redis:alpine'
     hostname: redis
@@ -29,10 +17,9 @@ services:
       - '8000'
     volumes:
       - .env:/app/.env
-    command: bash -c "python manage.py migrate && gunicorn myproject.wsgi:application -b 0.0.0.0:8000"
+    command: bash -c "gunicorn myproject.wsgi:application -b 0.0.0.0:8000"
     depends_on:
       - redis
-      - db
     networks:
       - fullstack
 
@@ -56,7 +43,6 @@ services:
     depends_on:
       - app
       - redis
-      - db
     networks:
       - fullstack
 
