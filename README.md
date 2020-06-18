@@ -137,7 +137,6 @@ Em produção tive que configurar algumas coisas manualmente:
 1. Criar banco PostgreSQL na [AWS RDS](https://aws.amazon.com/pt/rds/).
 2. Criar uma instância Ubuntu na [AWS EC2](https://aws.amazon.com/pt/ec2/).
 3. Conectar no servidor via ssh.
-4. Clonar o repositório do projeto. O nome da pasta será `app`.
 
 ### Crie alguns alias dentro do `~/.bashrc`
 
@@ -197,6 +196,21 @@ psql \
 
  CREATE ROLE rg3915 ENCRYPTED PASSWORD 'tistysterappikeliessemssystiflow' LOGIN;
 ```
+
+Crie um `.env`
+
+```
+cat << EOF > .env
+DEBUG=True
+SECRET_KEY=YTNlZjk5OTY4YjNlOWUxZjBkYTQwNzc2ZDZiMmVhNmU2ZmZlZG
+ALLOWED_HOSTS=*
+DB_HOST=URL
+POSTGRES_DB=dbloxodonta
+POSTGRES_USER=rg3915
+POSTGRES_PASSWORD=tistysterappikeliessemssystiflow
+EOF
+```
+
 
 Finalmente rode o script:
 

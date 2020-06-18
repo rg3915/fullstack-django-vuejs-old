@@ -34,15 +34,5 @@ echo "Clonando o repo"
 git clone https://github.com/rg3915/fullstack-django-vuejs.git
 mv fullstack-django-vuejs app
 cd app
+cp ../.env .
 docker-compose -f docker-compose.yml up --build -d
-
-cat << EOF > .env
-DEBUG=True
-SECRET_KEY=YTNlZjk5OTY4YjNlOWUxZjBkYTQwNzc2ZDZiMmVhNmU2ZmZlZG
-ALLOWED_HOSTS=*
-DB_HOST=URL
-POSTGRES_DB=dbloxodonta
-POSTGRES_USER=rg3915
-POSTGRES_PASSWORD=tistysterappikeliessemssystiflow
-EOF
-
