@@ -25,7 +25,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: backend/Dockerfile
     hostname: app
     stdin_open: true
     expose:
@@ -43,7 +43,7 @@ services:
     image: nginx
     hostname: nginx
     ports:
-      - '80:8000'
+      - '8000:8000'
     volumes:
       - ./config/nginx:/etc/nginx/conf.d
     depends_on:
@@ -54,7 +54,7 @@ services:
   celery:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: backend/Dockerfile
     command: "celery -A myproject worker -l info --queue=fila1"
     depends_on:
       - app
@@ -66,7 +66,7 @@ services:
   flower:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: backend/Dockerfile
     command: "celery -A myproject flower"
     depends_on:
       - celery
@@ -76,10 +76,10 @@ services:
   frontend:
     build:
       context: .
-      dockerfile: DockerfileVueJS
+      dockerfile: frontend/Dockerfile
     hostname: vuejs
     ports:
-      - '8080:8080'
+      - '80:8080'
     depends_on:
       - app
       - db
