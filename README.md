@@ -5,7 +5,7 @@ This is a Fullstack test project, and use.
 * [Ansible](https://docs.ansible.com/ansible/latest/index.html)
 * [Docker](https://docs.docker.com/get-started/)
 * [Swarm](https://docs.docker.com/engine/swarm/)
-* [Django 2.2.12](https://docs.djangoproject.com/en/2.2/)
+* [Django 2.2.13](https://docs.djangoproject.com/en/2.2/)
 * [VueJS](https://vuejs.org/v2/guide/)
 * [Nginx](https://nginx.org/en/docs/)
 * [PostgreSQL](https://www.postgresql.org/docs/)
