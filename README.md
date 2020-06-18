@@ -13,6 +13,8 @@ This is a Fullstack test project, and use.
 * [Redis](https://redis.io/documentation)
 * [Flower](https://flower.readthedocs.io/en/latest/)
 
+[Deploy na AWS](#deploy)
+
 ## Architecture
 
 ![01](img/01-swarm.png)
@@ -128,6 +130,17 @@ Em produção tive que configurar algumas coisas manualmente:
 * Criei banco de dados PostgreSQL na RDS.
 * Configurei endpoint no VueJS manualmente.
 * Liberei as portas 80, 8080 e 9000 no Security Group.
+
+
+## Deploy na AWS
+
+1. Criar banco PostgreSQL na [AWS RDS](https://aws.amazon.com/pt/rds/).
+2. Criar uma instância Ubuntu na [AWS EC2](https://aws.amazon.com/pt/ec2/).
+3. Conectar no servidor via ssh.
+4. Rodar o script `deploy_aws.sh`.
+5. Liberar as portas de conexão no *AWS security groups*.
+6. O site já está no ar a partir do IP público.
+
 
 ### Links
 
