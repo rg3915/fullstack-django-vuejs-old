@@ -27,7 +27,7 @@ services:
     image: nginx
     hostname: nginx
     ports:
-      - '80:8000'
+      - '8000:8000'
     volumes:
       - ./config/nginx:/etc/nginx/conf.d
     depends_on:
@@ -62,7 +62,7 @@ services:
       dockerfile: DockerfileVueJS
     hostname: vuejs
     ports:
-      - '8080:8080'
+      - '80:8080'
     networks:
       - fullstack
 
