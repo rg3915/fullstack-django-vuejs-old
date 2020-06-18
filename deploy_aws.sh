@@ -30,6 +30,15 @@ sudo gpasswd -a $USER docker
 sudo setfacl -m user:$USER:rw /var/run/docker.sock
 docker run hello-world
 
+echo "Running Portainer on port 9000..."
+docker run -d \
+-p 9000:9000 \
+--restart always \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v /opt/portainer:/data \
+portainer/portainer
+
+
 echo "Clonando o repo"
 git clone https://github.com/rg3915/fullstack-django-vuejs.git
 mv fullstack-django-vuejs app
