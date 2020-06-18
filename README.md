@@ -242,3 +242,7 @@ https://www.youtube.com/watch?v=3lD7zdwSYaU
 https://docs.ansible.com/ansible/latest/modules/docker_container_module.html#examples
 
 https://gist.github.com/mosquito/b23e1c1e5723a7fd9e6568e5cf91180f
+
+https://medium.com/codefactory/practical-devops-1-automagically-deploy-your-vue-js-app-to-aws-c3de080849f9
+
+https://nodejs.org/fr/docs/guides/nodejs-docker-webapp/
