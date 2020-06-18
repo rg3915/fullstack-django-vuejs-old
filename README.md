@@ -180,6 +180,33 @@ https://gist.github.com/rg3915/57b489c1751c384b3ad614c492478df0
 
 
 1. Rodar o script `deploy_aws.sh`.
+
+Antes configure corretamente a conexão com o banco de dados.
+
+* Conectar no RDS e criar o database. O RDS já define o nome do banco, você pode editar.
+
+Na se esqueça de definir acesso público ao banco.
+
+```
+psql \
+--host=url \
+--port=5432 \
+--username=postgres \
+--password \
+--dbname=nomedobanco
+
+ CREATE ROLE rg3915 ENCRYPTED PASSWORD 'tistysterappikeliessemssystiflow' LOGIN;
+```
+
+Finalmente rode o script:
+
+```
+chmod +x deploy_aws.sh
+./deploy_aws.sh
+```
+
+
+
 2. Liberar as portas de conexão no *AWS security groups*.
 3. O site já está no ar a partir do IP público.
 

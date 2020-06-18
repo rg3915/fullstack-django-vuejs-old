@@ -3,10 +3,14 @@ echo "Conectar no RDS e criar o database."
 # connect
 
 cat << EOF
-sudo su - postgres
-psql
+psql \
+--host=url \
+--port=5432 \
+--username=postgres \
+--password \
+--dbname=nomedobanco
+
  CREATE ROLE rg3915 ENCRYPTED PASSWORD 'tistysterappikeliessemssystiflow' LOGIN;
-CREATE DATABASE dbloxodonta OWNER rg3915;
 EOF
 
 
