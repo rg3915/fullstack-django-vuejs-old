@@ -45,3 +45,6 @@ mv fullstack-django-vuejs app
 cd app
 cp ../.env .
 docker-compose -f docker-compose.yml up --build -d
+
+echo "Fazendo a migração do banco"
+docker container exec app_app_1 python manage.py migrate
