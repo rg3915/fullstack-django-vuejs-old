@@ -89,7 +89,7 @@ DATABASES = {
         'USER': config('POSTGRES_USER'),
         'PASSWORD': config('POSTGRES_PASSWORD'),
         # é o nome do service 'db' no docker-compose.
-        'HOST': config('POSTGRES_DB', 'db'),
+        'HOST': config('DB_HOST', 'db'),
         'PORT': '5432',
     }
 }

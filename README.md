@@ -208,6 +208,10 @@ DB_HOST=URL
 POSTGRES_DB=dbloxodonta
 POSTGRES_USER=rg3915
 POSTGRES_PASSWORD=tistysterappikeliessemssystiflow
+APP_ID=xyz
+KEY=xyz
+SECRET=xyz
+CLUSTER=xyz
 EOF
 ```
 
