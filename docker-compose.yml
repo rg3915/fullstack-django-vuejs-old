@@ -10,7 +10,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: backend/Dockerfile
     hostname: app
     stdin_open: true
     expose:
@@ -38,7 +38,7 @@ services:
   celery:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: backend/Dockerfile
     command: "celery -A myproject worker -l info --queue=fila1"
     depends_on:
       - app
@@ -49,7 +49,7 @@ services:
   flower:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: backend/Dockerfile
     command: "celery -A myproject flower"
     depends_on:
       - celery
@@ -59,7 +59,7 @@ services:
   frontend:
     build:
       context: .
-      dockerfile: DockerfileVueJS
+      dockerfile: frontend/Dockerfile
     hostname: vuejs
     ports:
       - '80:8080'
