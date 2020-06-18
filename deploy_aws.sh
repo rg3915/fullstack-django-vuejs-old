@@ -11,6 +11,8 @@ EOF
 
 
 sudo apt update
+sudo apt -y upgrade
+
 
 echo "Instalando Docker"
 curl -fsSL https://get.docker.com/ | bash

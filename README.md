@@ -137,9 +137,51 @@ Em produção tive que configurar algumas coisas manualmente:
 1. Criar banco PostgreSQL na [AWS RDS](https://aws.amazon.com/pt/rds/).
 2. Criar uma instância Ubuntu na [AWS EC2](https://aws.amazon.com/pt/ec2/).
 3. Conectar no servidor via ssh.
-4. Rodar o script `deploy_aws.sh`.
-5. Liberar as portas de conexão no *AWS security groups*.
-6. O site já está no ar a partir do IP público.
+4. Clonar o repositório do projeto. O nome da pasta será `app`.
+
+### Crie alguns alias dentro do `~/.bashrc`
+
+```
+alias l='clear; ls -lF'
+alias rm='rm -i'
+alias h=history
+alias python=python3
+alias pip=pip3
+# Git
+alias g='git'
+alias gp='git push origin HEAD'
+```
+
+E faça `source ~/.bashrc`
+
+### Vim
+
+Se quiser configure seu `~/.vimrc` para usar 4 espaços.
+
+https://stackoverflow.com/questions/234564/tab-key-4-spaces-and-auto-indent-after-curly-braces-in-vim/234578#234578
+
+Eu gosto de deixar minha configuração assim:
+
+```
+set encoding=utf-8
+set number          " show line numbers
+set expandtab       " use spaces instead of tabs
+set autoindent      " autoindent based on line above
+set smartindent     " smarter indent for C-like languages
+set shiftwidth=4    " when using Shift + > or <
+set softtabstop=4   " in insert mode
+set tabstop=4       " set the space occupied by a regular tab
+```
+
+Eu tenho um `.vimrc` mais completo em
+
+https://gist.github.com/rg3915/57b489c1751c384b3ad614c492478df0
+
+
+
+1. Rodar o script `deploy_aws.sh`.
+2. Liberar as portas de conexão no *AWS security groups*.
+3. O site já está no ar a partir do IP público.
 
 
 ### Links
