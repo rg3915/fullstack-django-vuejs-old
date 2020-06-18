@@ -13,7 +13,7 @@ This is a Fullstack test project, and use.
 * [Redis](https://redis.io/documentation)
 * [Flower](https://flower.readthedocs.io/en/latest/)
 
-[Deploy na AWS](#deploy)
+[Deploy na AWS](#deploy-na-aws)
 
 ## Architecture
 
