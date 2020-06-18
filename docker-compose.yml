@@ -66,8 +66,5 @@ services:
     networks:
       - fullstack
 
-volumes:
-  pgdata:
-
 networks:
   fullstack:
