@@ -1,0 +1,16 @@
+# Django secrets
+DEBUG=True
+SECRET_KEY=SUPER_SECRET_KEY
+ALLOWED_HOSTS=127.0.0.1,.localhost
+
+# Database secrets
+DB_HOST=db
+POSTGRES_DB=mydb
+POSTGRES_USER=myuser
+POSTGRES_PASSWORD=mypass
+
+# Pusher secrets - pusher.com
+APP_ID=xyz
+KEY=xyz
+SECRET=xyz
+CLUSTER=xyz
