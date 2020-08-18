@@ -50,7 +50,9 @@ services:
     build:
       context: .
       dockerfile: backend/Dockerfile
-    command: "celery -A myproject flower"
+    ports:
+      - '5555:5555'
+    command: "celery -A myproject flower --address=0.0.0.0"
     depends_on:
       - celery
     networks:
