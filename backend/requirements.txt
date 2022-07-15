@@ -1,6 +1,6 @@
 celery==4.4.2
 dj-static==0.0.6
-django-celery-results==1.2.1
+django-celery-results==2.4.0
 django-cors-headers==3.3.0
 django-extensions==2.2.9
 Django==2.2.13
